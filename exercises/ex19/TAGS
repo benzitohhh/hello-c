@@ -1,0 +1,59 @@
+
+ex19.c,626
+int Monster_attack(void *self, int damage)Monster_attack9,116
+int Monster_init(void *self)Monster_init26,422
+Object MonsterProto = {MonsterProto33,523
+void *Room_move(void *self, Direction direction)Room_move39,607
+int Room_attack(void *self, int damage)Room_attack69,1269
+Object RoomProto = {RoomProto84,1530
+void *Map_move(void *self, Direction direction)Map_move90,1605
+int Map_attack(void *self, int damage)Map_attack105,1842
+int Map_init(void *self)Map_init114,1989
+Object MapProto = {MapProto144,2667
+int process_input(Map *game)process_input150,2758
+int main(int argc, char *argv[])main200,3564
+
+ex19.h,581
+#define _ex19_h_ex19_h2,16
+struct Monster {Monster6,54
+  Object proto;proto7,71
+  int hit_points;hit_points8,87
+typedef struct Monster Monster;Monster11,109
+struct Room {Room16,217
+  Object proto;proto17,231
+  Monster *bad_guy;bad_guy19,248
+  struct Room *north;north21,269
+  struct Room *south;south22,291
+  struct Room *east;east23,313
+  struct Room *west;west24,334
+typedef struct Room Room;Room27,359
+struct Map {Map34,506
+  Object proto;proto35,519
+  Room *start;start36,535
+  Room *location;location37,550
+typedef struct Map Map;Map40,572
+
+object.c,370
+void Object_destroy(void *self)Object_destroy7,100
+void Object_describe(void *self)Object_describe17,240
+int Object_init(void *self)Object_init23,337
+void *Object_move(void *self, Direction direction)Object_move29,405
+int Object_attack(void *self, int damage)Object_attack35,520
+void *Object_new(size_t size, Object proto, char *description)Object_new41,617
+
+object.h,568
+#define _object_h_object_h2,18
+  NORTH, SOUTH, EAST, WESTNORTH5,52
+  NORTH, SOUTH, EAST, WESTSOUTH5,52
+  NORTH, SOUTH, EAST, WESTEAST5,52
+  NORTH, SOUTH, EAST, WESTWEST5,52
+} Direction;Direction6,79
+  char *description;description9,110
+  int (*init)(void *self);init10,131
+  void (*describe)(void *self);describe11,158
+  void (*destroy)(void *self);destroy12,190
+  void *(*move)(void *self, Direction direction);move13,221
+  int (*attack)(void *self, int damage);attack14,271
+} Object;Object15,312
+#define NEW(NEW24,579
+#define _(_25,632
